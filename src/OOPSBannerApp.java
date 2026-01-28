@@ -1,29 +1,52 @@
+import java.util.HashMap;
+import java.util.Map;
+
 public class OOPSBannerApp {
 
     public static void main(String[] args) {
-        renderBanner();
+        renderWord("OOPS");
     }
 
-    static void renderBanner() {
-        for (String line : BannerPattern.PATTERN) {
-            printLine(line);
+    // Renders any word using character patterns stored in a Map
+    static void renderWord(String word) {
+        Map<Character, String[]> patterns = getPatterns();
+
+        for (int row = 0; row < 5; row++) {
+            for (char ch : word.toCharArray()) {
+                System.out.print(patterns.get(ch)[row] + "   ");
+            }
+            System.out.println();
         }
     }
 
-    static void printLine(String line) {
-        System.out.println(line);
-    }
+    // Stores patterns for each character
+    static Map<Character, String[]> getPatterns() {
+        Map<Character, String[]> map = new HashMap<>();
 
-    // Nested static class to store banner pattern
-    static class BannerPattern {
-        static final String[] PATTERN = {
-                "OOOOO   OOOOO   PPPPP   SSSSS",
-                "O   O   O   O   P   P   S",
-                "O   O   O   O   PPPPP   SSSSS",
-                "O   O   O   O   P       S",
-                "OOOOO   OOOOO   P       SSSSS"
-        };
+        map.put('O', new String[]{
+                "OOOOO",
+                "O   O",
+                "O   O",
+                "O   O",
+                "OOOOO"
+        });
+
+        map.put('P', new String[]{
+                "PPPPP",
+                "P   P",
+                "PPPPP",
+                "P",
+                "P"
+        });
+
+        map.put('S', new String[]{
+                "SSSSS",
+                "S",
+                "SSSSS",
+                "    S",
+                "SSSSS"
+        });
+
+        return map;
     }
 }
-
-

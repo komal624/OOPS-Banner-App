@@ -2,14 +2,16 @@ public class OOPSBannerApp {
 
     public static void main(String[] args) {
 
-        String banner = String.join("\n",
+        String[] bannerLines = {
                 "OOOOO   OOOOO   PPPPP   SSSSS",
                 "O   O   O   O   P   P   S",
                 "O   O   O   O   PPPPP   SSSSS",
                 "O   O   O   O   P       S",
                 "OOOOO   OOOOO   P       SSSSS"
-        );
+        };
 
-        System.out.print(banner);
+        for (String line : bannerLines) {
+            System.out.println(line);
+        }
     }
 }
